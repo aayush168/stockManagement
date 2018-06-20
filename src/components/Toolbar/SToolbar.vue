@@ -27,9 +27,9 @@ export default {
 
 <style>
 .secondaryToolbar {
-  width: 100%;
   max-width: 1300px;
   margin: 0 auto;
+  width: 100%;
 }
 .sLinks {
   display: flex;

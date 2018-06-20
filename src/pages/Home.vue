@@ -1,13 +1,8 @@
 <template>
-  <div>
-    <Navigation/>
-    <SToolbar/>
+  <q-page>
     <Dashboard/>
-  </div>
+  </q-page>
 </template>
-
-<style>
-</style>
 
 <script>
 import Navigation from 'components/Toolbar/Navigation'
@@ -22,3 +17,8 @@ export default {
   }
 }
 </script>
+
+<style lang="stylus">
+@import '~variables';
+
+</style>

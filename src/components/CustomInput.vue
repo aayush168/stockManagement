@@ -84,7 +84,7 @@ export default {
 .error-container {
   text-align: right;
   color: #db2828;
-  font-size: .9rem;
+  font-size: .8rem;
 }
 .error {
   display: block;

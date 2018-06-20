@@ -5,6 +5,7 @@ import firebase from "../../firebase/init"
 const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
 const LOGIN_ERROR = 'LOGIN_ERROR'
 const CHECK_LOGIN_SUCCESS = 'CHECK_LOGIN_SUCCESS'
+const CHECK_LOGIN_FAIL = 'CHECK_LOGIN_FAIL'
 
 
 function initialState() {
@@ -39,6 +40,12 @@ const mutations = {
     state.isAuthenticated = true
     state.username = firebaseUser.email
     state.userUid = firebaseUser.uid
+  },
+  [CHECK_LOGIN_FAIL] (state) {
+    const val = initialState();
+    Object.keys(val).forEach(key => {
+      state[key] = val[key]
+    })
   }
 }
 
@@ -50,8 +57,10 @@ const actions = {
       commit(LOGIN_SUCCESS, res)
     })
   },
+  logout({ commit }) {
+    firebase.auth()
+  },
   signUp ({ commit }, payload) {
-    console.log(payload)
     return Auth.signUpUser(payload).then(res => {
     })
   },
@@ -62,6 +71,8 @@ const actions = {
     firebase.auth().onAuthStateChanged(firebaseUser => {
       if(firebaseUser) {
         commit(CHECK_LOGIN_SUCCESS, firebaseUser)
+      } else {
+        commit(CHECK_LOGIN_FAIL)
       }
     })
   }

@@ -5,7 +5,7 @@
         Dashboard
       </q-toolbar-title>
       <q-icon name="person" size="1.5rem"/>
-      <span class="user" @click="pushLogin">{{username}}</span>
+      <span class="user" @click="openDropdown">{{username}}</span>
     </q-toolbar>
   </div>
 </template>
@@ -22,10 +22,8 @@ export default {
     ...mapGetters(['username'])
   },
   methods: {
-    pushLogin () {
-      this.$router.push({
-        name: 'Login'
-      })
+    openDropdown() {
+      
     }
   }
 }
@@ -33,7 +31,6 @@ export default {
 
 <style>
 .navigationToolbar {
-  box-shadow: 1px 1px 1px #dedede;
   padding: 20px 30px 20px 20px;
 }
 .q-toolbar-title {
@@ -42,5 +39,6 @@ export default {
 }
 .user {
   margin:0 10px;
+  cursor: pointer;
 }
 </style>

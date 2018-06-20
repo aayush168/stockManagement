@@ -24,16 +24,13 @@ const Router = new VueRouter({
 
 
 Router.beforeEach((to, from, next) => {
-  
-  store.dispatch('checkUserLogInStatus').then(() => {
-    if(to.path != '/login' && store.state.auth.isAuthenticated === false) {
-      next({
-        path: '/login',
-      })
-    } else {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    store.dispatch('checkUserLogInStatus').then(() => {
       next()
-    }
-  })
-});
+    })
+  } else {
+    next()
+  }
+})
 
 export default Router

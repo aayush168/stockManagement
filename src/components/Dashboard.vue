@@ -1,5 +1,4 @@
 <template>
-  <div class="container">
     <div class="containerWrapper">
       <div class="headerDashboard">
       <q-card class="stockCards">
@@ -42,7 +41,6 @@
       </q-card>
       </div>
     </div>
-  </div>
 </template>
 
 <script>

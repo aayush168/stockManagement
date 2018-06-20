@@ -1,6 +1,6 @@
 <template>
   <div class="containerLogin">
-    <form @submit.prevent="$v.$touch()"  class="formWrapper">
+    <form @submit.prevent="loginUser()"  class="formWrapper">
       <span class="loginTitle">Welcome </span>
       <custom-input v-model='form.email' :formData='form' :handler='$v' name='email' float-label='Email' icon="person" class="inputLogin" @change="inputChanged()">
       </custom-input>
