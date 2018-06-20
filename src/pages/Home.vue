@@ -1,10 +1,13 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
+  <div>
     <Navigation/>
     <SToolbar/>
     <Dashboard/>
-  </q-layout>
+  </div>
 </template>
+
+<style>
+</style>
 
 <script>
 import Navigation from 'components/Toolbar/Navigation'
@@ -12,12 +15,6 @@ import SToolbar from 'components/Toolbar/SToolbar'
 import Dashboard from 'components/Dashboard'
 
 export default {
-  data () {
-    return {
-    }
-  },
-  methods: {
-  },
   components: {
     Navigation,
     SToolbar,
@@ -25,17 +22,3 @@ export default {
   }
 }
 </script>
-
-<style>
-* {
-  font-size: 14px;
-}
-.container {
-  max-width: 1300px;
-  width: 100%;
-  margin: 0 auto;
-}
-input.q-input-target {
-  padding: 10px 5px 5px 5px;
-}
-</style>

@@ -1,15 +1,28 @@
+import Login from 'pages/Login'
+import Home from 'pages/Home'
+import SignUp from 'pages/SignUp'
 
 export default [
   {
-    path: '/',
-    component: () => import('layouts/default'),
-    children: [
-      { path: '', component: () => import('pages/index') }
-    ]
+    path: '/login',
+    component: Login,
+    name: 'Login'
   },
-
+  {
+    path: '/signup',
+    component: SignUp,
+    name: 'SignUp'
+  },
+  {
+    path: '/',
+    component: Home,
+    name: 'Home'
+  },
   { // Always leave this as last one
     path: '*',
     component: () => import('pages/404')
   }
 ]
+
+
+

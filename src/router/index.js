@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-
 import routes from './routes'
+import store from "../store/"
 
 Vue.use(VueRouter)
 
@@ -20,5 +20,20 @@ const Router = new VueRouter({
   scrollBehavior: () => ({ y: 0 }),
   routes
 })
+
+
+
+Router.beforeEach((to, from, next) => {
+  
+  store.dispatch('checkUserLogInStatus').then(() => {
+    if(to.path != '/login' && store.state.auth.isAuthenticated === false) {
+      next({
+        path: '/login',
+      })
+    } else {
+      next()
+    }
+  })
+});
 
 export default Router

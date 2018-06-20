@@ -1,6 +1,6 @@
 <template>
-  <div id="q-app">
-    <router-view />
+  <div >
+    
   </div>
 </template>
 
@@ -13,6 +13,11 @@ export default {
   data () {
     return {
     }
+  },
+  created () {
+    
+  },
+  methods: {
   }
 }
 </script>
