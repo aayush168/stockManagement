@@ -31,7 +31,7 @@ export default {
 
 <style>
 .navigationToolbar {
-  padding: 20px 30px 20px 20px;
+  padding: 20px;
 }
 .q-toolbar-title {
   color: #666;

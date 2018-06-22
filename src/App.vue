@@ -36,4 +36,7 @@ export default {
 .q-layout-header {
   box-shadow: none;
 }
+.q-list {
+  border: none;
+}
 </style>

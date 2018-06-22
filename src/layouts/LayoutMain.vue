@@ -1,6 +1,6 @@
 <template>
   <q-layout view="lHh Lpr lFf" class="container">
-    <q-layout-header>
+    <q-layout-header class="headerContainer">
       <Navigation/>
       <SToolbar/>
     </q-layout-header>
@@ -41,8 +41,9 @@ export default {
   max-width: 1300px;
   width: 100%;
   margin: 0 auto;
-}
-input.q-input-target {
-  padding: 10px 5px 5px 5px;
+  .headerContainer {
+    width: 100%;
+  }
+
 }
 </style>
