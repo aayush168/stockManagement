@@ -21,20 +21,14 @@ const Router = new VueRouter({
   routes
 })
 
-
-
-// Router.beforeEach((to, from, next) => {
-//   if (to.matched.some(record => record.meta.requiresAuth)) {
-//     store.dispatch('checkUserLogInStatus').then(() => {
-//       if(store.getters.isAuthenticated ===  false) {
-//         next('/login')
-//       } else {
-//         next()
-//       }
-//     })
-//   } else {
-//     next()
-//   }
-// })
+Router.beforeEach((to, from, next) => {
+  const authRequired = to.matched.some((record) => record.meta.requiresAuth)
+  const authed = store.getters.isLoggedIn
+  if (authRequired && !authed) {
+    next('/login')
+  } else {
+    next()
+  }
+})
 
 export default Router

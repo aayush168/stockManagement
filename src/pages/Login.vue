@@ -1,6 +1,6 @@
 <template>
   <div class="containerLogin">
-    <form @submit.prevent="loginUser()"  class="formWrapper">
+    <form @submit.prevent="$v.touch()"  class="formWrapper">
       <span class="loginTitle">Welcome </span>
       <custom-input v-model='form.email' :formData='form' :handler='$v' name='email' float-label='Email' icon="person" class="inputLogin" @change="inputChanged()">
       </custom-input>
@@ -52,7 +52,7 @@ export default {
     ...mapGetters(['loginLoader'])
   },
   methods: {
-    ...mapActions(['login', 'loginError']),
+    ...mapActions(['login']),
     loginUser () {
       this.$v.form.$touch()
       if (this.$v.form.$error) {
@@ -64,7 +64,6 @@ export default {
         }).then( res => {
           this.$router.push('/')
         }).catch(err => {
-          this.loginError()
           this.form.generalErrorMessages = err
         })
       }

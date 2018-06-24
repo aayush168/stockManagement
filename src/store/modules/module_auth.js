@@ -1,4 +1,6 @@
 import firebase from "../../firebase/init"
+import db from "../../firebase/db"
+import router from "../../router"
 
 function initialState() {
   return {
@@ -27,22 +29,52 @@ const mutations = {
       state.isLoggedIn = false;
     }
   },
+  clearUserData(state){
+    const s = initialState();
+    Object.keys(s).forEach(key => {
+      state[key] = s[key]
+    })
+  },
 }
 
 const actions = {
-  async login({commit}, payload) {
-    try {
-      await firebase.auth().signInWithEmailAndPassword(payload.email, payload.password)
-    } catch (error) {
-      console.log(error)
-    }
+  async checkUserLoginStatus({ commit }) {
+    await firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        if (user.user) {
+          user = user.user;
+        }
+        const setUser = {
+          id: user.uid,
+          username: user.email,
+        };
+        commit('setUser', setUser);
+        router.push('/');
+      } else {
+        router.push('/login');        
+      }
+    });
   },
-  async logout() {
-    await firebase.auth().signOut()
+  async login({commit, dispatch}, payload) {
+    await firebase.auth().signInWithEmailAndPassword(payload.email, payload.password)
+    dispatch('checkUserLoginStatus')
+  },
+  async logout({ commit }) {
+    await firebase.auth().signOut().then(() => {
+      commit('clearUserData')
+      router.push('/login')
+      }
+    )
   }, 
   async signUp({ commit }, payload) {
-    console.log(payload)
-    await firebase.auth().createUserWithEmailAndPassword(payload.email, payload.password)
+    await firebase.auth().createUserWithEmailAndPassword(payload.email, payload.password).then(() => {
+      const setUser = {
+        id: user.uid,
+        username: user.email,
+        created_at: firebase.firestore.FieldValue.serverTimestamp(),
+      };
+      db.collection('users').doc(setUser.id).set(setUser);
+    })
   }
  }
 

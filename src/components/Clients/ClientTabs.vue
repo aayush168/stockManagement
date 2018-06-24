@@ -9,7 +9,7 @@
               </q-item-tile>
             </q-item-main>
           </q-item>
-          <q-item class="itemList" link to="/clientLists">
+          <q-item class="itemList" link>
             <q-item-side icon="folder" inverted color="primary" />
             <q-item-main>
               <q-item-tile label class="itemListName">

@@ -5,13 +5,13 @@
         Dashboard
       </q-toolbar-title>
       <q-icon name="person" size="1.5rem"/>
-      <span class="user" @click="openDropdown">{{username}}</span>
+      <span class="user" @click="logout">{{user.username}}</span>
     </q-toolbar>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   data () {
@@ -19,12 +19,10 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['username'])
+    ...mapGetters(['user'])
   },
   methods: {
-    openDropdown() {
-      
-    }
+    ...mapActions(['logout'])
   }
 }
 </script>

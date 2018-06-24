@@ -13,6 +13,7 @@ import CustomInput from 'components/CustomInput'
 
 export default {
   components: {
+    CustomInput
   }
 }
 </script>

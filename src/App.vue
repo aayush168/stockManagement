@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'App',
@@ -16,18 +16,11 @@ export default {
   computed: {
     ...mapGetters(['isLoggedIn'])
   },
-  watch: {
-    isLoggedIn: function(val) {
-      if (!val) {
-        this.$router.push({
-          name: 'Login'
-        });
-      } else {
-        this.$router.push({
-          name: 'Home'
-        });
-      }
-    }
+  methods: {
+    ...mapActions(['checkUserLoginStatus'])
+  },
+  created() {
+    this.checkUserLoginStatus()
   }
 }
 </script>
