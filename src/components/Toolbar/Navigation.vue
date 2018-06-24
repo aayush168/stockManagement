@@ -1,6 +1,6 @@
 <template>
   <div>
-    <q-toolbar color="white" text-color="faded" class="navigationToolbar">
+    <q-toolbar class="navigationToolbar">
       <q-toolbar-title>
         Dashboard
       </q-toolbar-title>
@@ -29,12 +29,14 @@ export default {
 }
 </script>
 
-<style>
+<style lang="stylus">
+@import '~variables';
+
 .navigationToolbar {
-  padding: 20px;
+  padding: 15px;
+  background-color: $primaryBlue !important;
 }
 .q-toolbar-title {
-  color: #666;
   font-size: 1.25rem;
 }
 .user {

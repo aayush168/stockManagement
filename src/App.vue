@@ -14,10 +14,10 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['isAuthenticated'])
+    ...mapGetters(['isLoggedIn'])
   },
   watch: {
-    isAuthenticated: function(val) {
+    isLoggedIn: function(val) {
       if (!val) {
         this.$router.push({
           name: 'Login'

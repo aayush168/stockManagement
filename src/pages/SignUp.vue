@@ -1,13 +1,13 @@
 <template>
   <div class="containerLogin">
-    <form @submit.prevent="$v.$touch()"  class="formWrapper">
+    <form @submit.prevent="signUpNewUser()"  class="formWrapper">
       <span class="loginTitle">Sign Up </span>
       <custom-input v-model='form.email' :formData='form' :handler='$v' name='email' float-label='Email' icon="person" class="inputLogin">
       </custom-input>
       <custom-input v-model='form.password' :formData='form' :handler='$v' name='password' float-label='Password' type='password' icon="vpn_key" class="inputLogin">
       </custom-input>
       <span v-if="form.generalErrorMessages" class="errorMessage">{{form.generalErrorMessages}}</span>
-      <q-btn label="Sign Up" class="loginBtn" @click="signUp()"/>
+      <q-btn label="Sign Up" class="loginBtn" @click="signUpNewUser()"/>
     </form>
   </div>
 </template>
@@ -48,7 +48,7 @@ export default {
   },
   methods: {
     ...mapActions(['signUp']),
-    signUp () {
+    signUpNewUser () {
       this.$v.form.$touch()
       if (this.$v.form.$error) {
         console.log('errors')
@@ -56,10 +56,6 @@ export default {
         this.signUp({
           email: this.form.email,
           password: this.form.password
-        }).then(res => {
-          this.$router.push('/')
-        }).catch(err => {
-          console.log(err)
         })
       }
     }

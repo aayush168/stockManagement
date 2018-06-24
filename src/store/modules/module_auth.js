@@ -1,19 +1,10 @@
-
-import * as Auth from "../services/Auth"
 import firebase from "../../firebase/init"
-
-const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
-const LOGIN_ERROR = 'LOGIN_ERROR'
-const CHECK_LOGIN_SUCCESS = 'CHECK_LOGIN_SUCCESS'
-const CHECK_LOGIN_FAIL = 'CHECK_LOGIN_FAIL'
-
 
 function initialState() {
   return {
-    isAuthenticated: false,
-    loginLoader: false,
-    username: '',
-    userUid: ''
+    user: {},
+    isLoggedIn: false,
+    loginLoader: false
   }
 }
 const state = {
@@ -21,60 +12,37 @@ const state = {
 }
 
 const getters = {
-  isAuthenticated: state => state.isAuthenticated,
+  isLoggedIn: state => state.isLoggedIn,
   loginLoader: state => state.loginLoader,
-  username: state => state.username
+  user: state => state.user
 }
   
 const mutations = {
-  [LOGIN_SUCCESS](state, res) {
-    state.isAuthenticated = true
-    state.loginLoader = false
-    state.username = res.email
-    state.userUid = res.uid
+  setUser(state, user) {
+    if (user) {
+      state.user = user;
+      state.isLoggedIn = true;
+    } else {
+      state.user = {};
+      state.isLoggedIn = false;
+    }
   },
-  [LOGIN_ERROR] (state) {
-    state.loginLoader = false
-  },
-  [CHECK_LOGIN_SUCCESS] (state, firebaseUser) {
-    state.isAuthenticated = true
-    state.username = firebaseUser.email
-    state.userUid = firebaseUser.uid
-  },
-  [CHECK_LOGIN_FAIL] (state) {
-    const val = initialState();
-    Object.keys(val).forEach(key => {
-      state[key] = val[key]
-    })
-  }
 }
 
 const actions = {
-  login ({ commit, state }, payload) {
-    state.loginLoader = true
-    return Auth.login(payload).then(res => {
-      console.log(res)
-      commit(LOGIN_SUCCESS, res)
-    })
+  async login({commit}, payload) {
+    try {
+      await firebase.auth().signInWithEmailAndPassword(payload.email, payload.password)
+    } catch (error) {
+      console.log(error)
+    }
   },
-  logout({ commit }) {
-    firebase.auth()
-  },
-  signUp ({ commit }, payload) {
-    return Auth.signUpUser(payload).then(res => {
-    })
-  },
-  loginError ({ commit }) {
-    commit(LOGIN_ERROR)
-  },
-  checkUserLogInStatus({commit}) {
-    firebase.auth().onAuthStateChanged(firebaseUser => {
-      if(firebaseUser) {
-        commit(CHECK_LOGIN_SUCCESS, firebaseUser)
-      } else {
-        commit(CHECK_LOGIN_FAIL)
-      }
-    })
+  async logout() {
+    await firebase.auth().signOut()
+  }, 
+  async signUp({ commit }, payload) {
+    console.log(payload)
+    await firebase.auth().createUserWithEmailAndPassword(payload.email, payload.password)
   }
  }
 

@@ -1,5 +1,15 @@
 <template>
-  <div>
+  <q-layout class="secondaryToolbar">
+    <ul class="tabLinks">
+      <router-link></router-link>
+      <router-link></router-link>
+      <router-link></router-link>
+      <router-link></router-link>
+      <router-link></router-link>
+    </ul>
+  </q-layout>
+  <!-- <div>
+
     <q-toolbar color="white" text-color="faded">
       <div class="secondaryToolbar">
         <ul class="sLinks">
@@ -27,7 +37,7 @@
         </ul>
       </div>
     </q-toolbar>
-  </div>
+  </div> -->
 </template>
 
 <script>
@@ -51,25 +61,9 @@ export default {
 @import '~variables';
 
 .secondaryToolbar {
-  width: 100%;
-  max-width: 1300px;
-  margin: 0 auto;
-  .sLinks {
-    display: flex;
-    list-style-type: none;
-    padding-left:0;
-    .lists {
-      padding: 0 20px;
-      font-size: 1.2rem;
-      cursor: pointer;      
-      &:first-child {
-        padding-left: 0;
-      }
-      i {
-        vertical-align: bottom;
-        margin-right: 5px;
-      }
+    background-color: $secondary-dark;
+    .tabLinks {
+      margin: 0;
     }
-  }
 }
 </style>

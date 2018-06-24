@@ -1,11 +1,13 @@
 <template>
-  <q-layout view="lHh Lpr lFf" class="container">
-    <q-layout-header class="headerContainer">
-      <Navigation/>
-      <SToolbar/>
-    </q-layout-header>
-    <q-page-container>
-      <router-view/>
+  <q-layout view="lHh Lpr lFf">
+    <q-page-container class="container">
+      <div class="leftSidebar">
+        <SToolbar/>
+      </div>
+      <div class="rightSidebar">
+        <Navigation/>
+        <router-view/>
+      </div>
     </q-page-container>  
   </q-layout>
 </template>
@@ -13,7 +15,6 @@
 <script>
 import Navigation from 'components/Toolbar/Navigation'
 import SToolbar from 'components/Toolbar/SToolbar'
-import Dashboard from 'components/Dashboard'
 
 export default {
   name: 'LayoutMain',
@@ -25,8 +26,7 @@ export default {
   },
   components: {
     Navigation,
-    SToolbar,
-    Dashboard
+    SToolbar
   }
 }
 </script>
@@ -36,14 +36,21 @@ export default {
 
 * {
   font-size: 14px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 .container {
-  max-width: 1300px;
   width: 100%;
-  margin: 0 auto;
-  .headerContainer {
-    width: 100%;
+  max-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  .leftSidebar{
+    width: 60px;
   }
-
+  .rightSidebar {
+    width: 100%;
+    background-color: #ededed;
+  }
 }
 </style>
