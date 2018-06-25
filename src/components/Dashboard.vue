@@ -1,44 +1,24 @@
 <template>
     <div class="containerWrapper">
-      <div class="headerDashboard">
-      <q-card class="stockCards">
-        <q-card-title>
-          Monthly Report
-        </q-card-title>
-        
-        <q-card-main>
-          Card Content
-        </q-card-main>
-      </q-card>
-      <q-card class="stockCards">
-        <q-card-title>
-          Card Title
-        </q-card-title>
-        
-        <q-card-main>
-          Card Content
-        </q-card-main>
-      </q-card>
-      <q-card class="stockCards">
-        <q-card-title>
-          Card Title
-        </q-card-title>
-        
-        <q-card-main>
-          Card Content
-        </q-card-main>
-      </q-card>
-      </div>
       <div class="mainDashboard">
         <q-card class="stockCardsMain">
-        <q-card-title>
-          Summary Report
-        </q-card-title>
-        
-        <q-card-main>
-          Card Content
-        </q-card-main>
-      </q-card>
+          <q-card-title>
+            Summary Report
+          </q-card-title>
+          <q-card-main>
+            Card Content
+          </q-card-main>
+        </q-card>
+      </div>
+      <div class="rightDashboard">
+        <q-card class="stockCardsMain">
+          <q-card-title>
+            Summary Report
+          </q-card-title>
+          <q-card-main>
+            Card Content
+          </q-card-main>
+        </q-card>
       </div>
     </div>
 </template>
@@ -55,20 +35,21 @@ export default {
 }
 </script>
 
-<style>
-.stockCards {
-  max-width: 250px;
-  width: 100%;
-  display: inline-block;
-  margin: 15px 15px 15px 0;
-}
-.stockCardsMain {
-  max-width: 600px;
-  width: 100%;
-  display: inline-block;
-  margin: 15px 15px 15px 0;
-}
+<style lang="stylus" scoped>
+@import '~variables';
+
 .containerWrapper {
-  padding: 30px;
+  display: flex;
+  width: 100%;
+  padding: 30px 0;
+  .mainDashboard {
+    width: 30%;
+    padding: 0 15px 0 30px;
+  }
+  .rightDashboard {
+    width: 70%;
+    padding: 0 30px 0 15px;
+  }
 }
+
 </style>

@@ -57,7 +57,6 @@ const actions = {
   },
   async login({commit, dispatch}, payload) {
     await firebase.auth().signInWithEmailAndPassword(payload.email, payload.password)
-    dispatch('checkUserLoginStatus')
   },
   async logout({ commit }) {
     await firebase.auth().signOut().then(() => {
