@@ -4,8 +4,7 @@
       <q-toolbar-title>
         Dashboard
       </q-toolbar-title>
-      <q-icon name="person" size="1.5rem"/>
-      <span class="user" @click="logout">{{user.username}}</span>
+      <q-icon name="person" size="1.5rem" @click.native="logout" class="user"/>
     </q-toolbar>
   </div>
 </template>
@@ -31,14 +30,15 @@ export default {
 @import '~variables';
 
 .navigationToolbar {
-  padding: 15px;
-  background-color: $primaryBlue !important;
+  padding: 20px;
+  background-color: #fff !important;
+  color: $color-grey !important;
+  box-shadow: 1px 1px 1px #ddd !important;
 }
 .q-toolbar-title {
   font-size: 1.25rem;
 }
 .user {
-  margin:0 10px;
   cursor: pointer;
 }
 </style>

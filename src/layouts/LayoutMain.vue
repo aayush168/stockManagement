@@ -41,16 +41,17 @@ export default {
   box-sizing: border-box;
 }
 .container {
+  position: relative;
   width: 100%;
   max-height: 100vh;
   overflow: hidden;
   display: flex;
   .leftSidebar{
     width: 60px;
+    min-width: 60px;
   }
   .rightSidebar {
     width: 100%;
-    background-color: #ededed;
   }
 }
 </style>

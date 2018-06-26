@@ -3,22 +3,28 @@
       <div class="mainDashboard">
         <q-card class="stockCardsMain">
           <q-card-title>
-            Summary Report
           </q-card-title>
           <q-card-main>
-            Card Content
           </q-card-main>
         </q-card>
       </div>
       <div class="rightDashboard">
-        <q-card class="stockCardsMain">
-          <q-card-title>
-            Summary Report
-          </q-card-title>
-          <q-card-main>
-            Card Content
-          </q-card-main>
-        </q-card>
+        <div class="rightTopBashBoard">
+          <q-card class="stockCardTop">
+            <q-card-title>
+            </q-card-title>
+            <q-card-main>
+            </q-card-main>
+          </q-card>
+        </div>
+        <div class="bottomRightDashboard">
+          <q-card class="stockCardBottom">
+            <q-card-title>
+            </q-card-title>
+            <q-card-main>
+            </q-card-main>
+          </q-card>
+        </div>
       </div>
     </div>
 </template>
@@ -41,14 +47,18 @@ export default {
 .containerWrapper {
   display: flex;
   width: 100%;
-  padding: 30px 0;
+  padding: 20px;
   .mainDashboard {
     width: 30%;
-    padding: 0 15px 0 30px;
+    padding: 0 2.5px 0 5px;
   }
   .rightDashboard {
     width: 70%;
-    padding: 0 30px 0 15px;
+    padding: 0 5px 0 2.5px;
+    .rightTopBashBoard {
+      margin-bottom: 2.5px;
+      
+    }
   }
 }
 

@@ -5,6 +5,7 @@ import SignUp from 'pages/SignUp'
 import Clients from 'pages/Clients'
 import Reports from 'pages/Reports'
 import AddInvoice from 'pages/AddInvoice'
+import Products from 'pages/Products'
 
 export default [
   {
@@ -41,6 +42,11 @@ export default [
         path: '/reports',
         component: Reports,
         name: 'Reports',
+      },
+      {
+        path: '/products',
+        component: Products,
+        name: 'Products',
       }
     ]
   },
